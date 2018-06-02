@@ -20,8 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-//        [self createObserver];
+    //        [self createObserver];
     NSLog(@"%@",[NSRunLoop currentRunLoop]);
+    
     
 }
 
@@ -46,6 +47,7 @@
          kCFRunLoopExit = (1UL << 7),
          kCFRunLoopAllActivities = 0x0FFFFFFFU
          */
+        
     });
     
     CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);  // 添加监听者，关键！

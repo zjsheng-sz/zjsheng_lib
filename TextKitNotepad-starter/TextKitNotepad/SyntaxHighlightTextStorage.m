@@ -108,6 +108,7 @@
 }
 
 - (void) createHighlightPatterns {
+    
     UIFontDescriptor *scriptFontDescriptor =
     [UIFontDescriptor fontDescriptorWithFontAttributes:
      @{UIFontDescriptorFamilyAttribute: @"Zapfino"}];
@@ -145,8 +146,9 @@
 
 - (NSDictionary*)createAttributesForFontStyle:(NSString*)style
                                     withTrait:(uint32_t)trait {
+    
     UIFontDescriptor *fontDescriptor = [UIFontDescriptor
-                                        preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+                                        preferredFontDescriptorWithTextStyle:style];
     
     UIFontDescriptor *descriptorWithTrait = [fontDescriptor
                                              fontDescriptorWithSymbolicTraits:trait];

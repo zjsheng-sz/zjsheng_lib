@@ -92,19 +92,18 @@
 //转场动画
 - (IBAction)transformAnimation:(id)sender {
     
-    [UIView transitionWithView:self.centerShowView duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.centerShowView.backgroundColor = [UIColor redColor];
-    } completion:^(BOOL finished) {
-        NSLog(@"动画结束");
-    }];
-    
-    
-//    UIView *newCenterShowView = [[UIView alloc] initWithFrame:self.centerShowView.frame];
-//    newCenterShowView.backgroundColor = [UIColor blueColor];
-//
-//    [UIView transitionFromView:self.centerShowView toView:newCenterShowView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
+//    [UIView transitionWithView:self.centerShowView duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+//        self.centerShowView.backgroundColor = [UIColor redColor];
+//    } completion:^(BOOL finished) {
 //        NSLog(@"动画结束");
 //    }];
+    
+    UIView *newCenterShowView = [[UIView alloc] initWithFrame:self.centerShowView.frame];
+    newCenterShowView.backgroundColor = [UIColor blueColor];
+
+    [UIView transitionFromView:self.centerShowView toView:newCenterShowView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
+        NSLog(@"动画结束");
+    }];
     
 //    UIViewAnimationOptionTransitionFlipFromLeft    = 1 << 20,
 //    UIViewAnimationOptionTransitionFlipFromRight   = 2 << 20,

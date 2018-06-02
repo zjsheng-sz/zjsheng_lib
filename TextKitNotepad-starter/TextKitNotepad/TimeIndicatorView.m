@@ -14,6 +14,8 @@
 }
 
 -(id)initWithDate:(NSDate *)date {
+    NSLog(@"%s",__func__);
+
     if (self = [super init]) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
@@ -38,7 +40,8 @@
 
 
 - (void)updateSize {
-    
+    NSLog(@"%s",__func__);
+
     // size the label based on the font
     _label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     _label.frame = CGRectMake(0, 0, FLT_MAX, FLT_MAX);
@@ -63,11 +66,13 @@
 
 // calculates the radius of the circle that surrounds the label
 - (float) radiusToSurroundFrame:(CGRect)frame {
+    
     return MAX(frame.size.width, frame.size.height) * 0.5 + 20.0f;
 }
 
 - (UIBezierPath *)curvePathWithOrigin:(CGPoint)origin {
-    
+    NSLog(@"%s",__func__);
+
     return [UIBezierPath bezierPathWithArcCenter:origin
                                           radius:[self radiusToSurroundFrame:_label.frame]
                                       startAngle:-180.0f
@@ -78,6 +83,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"%s",__func__);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSetShouldAntialias(ctx, YES);
     UIBezierPath* path = [self curvePathWithOrigin:_label.center];
