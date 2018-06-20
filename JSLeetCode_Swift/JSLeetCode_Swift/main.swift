@@ -10,6 +10,4 @@ import Foundation
 
 let object = Solution()
 
-print(object .uniqueMorseRepresentations(["gin", "zen", "gig", "msg"]))
-
-print(object.flipAndInvertImage([[1,0,0],[1,1,1],[0,1,1]]))
+print(object.nextGreaterElement([4,1,2], [1,3,4,2]))

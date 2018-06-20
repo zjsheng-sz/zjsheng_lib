@@ -8,73 +8,62 @@
 
 import Cocoa
 
+
+/*
+ 1234
+ 5123
+ 9512
+ */
+
+
+//-2,-1,0,1,2,3
+
+
 class Solution: NSObject {
     
     
-    func flipAndInvertImage(_  A: [[Int]]) -> [[Int]] {
-        
-        var B = [[Int]]()
-        
-        for  i in 0..<A.count {
-            
-            for j in 0 ..< A[i].count{
-                
-                
-                B[i][j] = A[i][A[j].count - 1 - j]
-                B[i][A[j].count - 1 - j] = A[i][j]
-                B[i][j] = 1 - B[i][j]
+    func nextGreaterElement(_ findNums: [Int], _ nums: [Int]) -> [Int] {
 
+        var resultArr = [Int]()
+
+        
+        
+        for i in 0..<findNums.count {
+
+            var tmp = -1;
+            
+            if i < nums.count {
+                
+                for j in i..<nums.count{
+                
+                    var isInFindNums = false
+                    for k in 0...i {
+                        if findNums[k] == nums[j] { isInFindNums = true}
+                    }
+                
+                    if nums[j] > findNums[i] && !isInFindNums {tmp = nums[j]; break}
+                }
             }
+            
+            
+
+            resultArr.append(tmp)
         }
-        
-        
-        return A;
+
+        return resultArr;
     }
     
-    func uniqueMorseRepresentations(_ words: [String]) -> Int {
-        
-        let morses = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
-
-        var resultArrresultArr = Array<String>()
-        
-        for word:String in words {
-            
-            var morseWord = ""
-            
-            for character:Character in word {
-                
-                let a:Character = "a"
-                
-                let morse = morses[character.toInt() - a.toInt()]
-                
-                morseWord += morse
-            }
-            
-            if resultArrresultArr.contains(morseWord) == false {
-                
-                resultArrresultArr.append(morseWord)
-            }
-            
-        }
-        
-        print(resultArrresultArr)
-        
-        return resultArrresultArr.count
-    }
-
-}
-
-
-extension Character{
-    func toInt() -> Int {
-        var intFromCharacter:Int = 0
-        
-        for scalar in String(self).unicodeScalars {
-            intFromCharacter = Int(scalar.value)
-            
-        }
-        return intFromCharacter
-        
-    }
+//    func nextGreaterElement(_ findNums: [Int], _ nums: [Int]) -> [Int] {
+//        var dict = [Int: Int]()
+//        var stack = [Int]()
+//        nums.forEach {
+//            while (!stack.isEmpty && stack.last ?? 0 < $0) {
+//                dict[stack.popLast() ?? 0] = $0
+//            }
+//            stack.append($0)
+//        }
+//        return findNums.map { dict[$0] ?? -1 }
+//    }
     
 }
+

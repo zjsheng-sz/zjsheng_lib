@@ -1,0 +1,6 @@
+framework module Pods_MaxiAP200FileBrowser {
+  umbrella header "Pods-MaxiAP200FileBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}
