@@ -1,0 +1,57 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  
+
+
+
+  desc "测试+发布"
+  lane :FileBrower do
+
+		#获取版本号
+    	version = get_version_number(
+    	xcodeproj: "./MaxiAP200FileBrowser.xcodeproj",
+    	target: "MaxiAP200FileBrowser"
+    	)
+
+    	#开始编译
+    	build_ios_app(
+			    	scheme: "MaxiAP200FileBrowser",
+		    		export_method:"ad-hoc",
+            		clean: true,
+		    		output_directory: "./build/V#{version}",
+		    		output_name: "AP200FileBrowser_#{version}",
+		            workspace: "MaxiAP200FileBrowser.xcworkspace",
+		            include_symbols: false,
+		            silent: true,
+		            export_xcargs: "-allowProvisioningUpdates",
+		            export_options: {
+	                provisioningProfiles: {
+	                    "com.autel.MaxiAP200FileBrowser" => "AP200FileBrowser_Adhoc"
+	                }
+	            }
+            )
+	
+
+  end
+
+
+
+
+
+end

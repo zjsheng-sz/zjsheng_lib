@@ -1,0 +1,24 @@
+source 'https://github.com/CocoaPods/Specs.git'  #官方仓库地址
+#source ‘git@localhost:/git/autelSpec.git’  #私有仓库地址
+
+platform :ios, '8.0'
+inhibit_all_warnings!
+
+def shared_pod
+
+pod 'SVProgressHUD', '~> 2.2.2'
+
+end
+
+# 平台工程
+
+target 'zjs_animation' do
+    
+#    project 'MaxiAp200_Platfrom/MaxiAp200_Platfrom.xcodeproj'
+    shared_pod
+end
+
+
+
+
+
